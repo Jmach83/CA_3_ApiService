@@ -78,12 +78,14 @@ public class PasswordStorage
     public static boolean verifyPassword(String password, String correctHash)
         throws CannotPerformOperationException, InvalidHashException
     {
+        System.out.println("verifyP hash " + correctHash );
         return verifyPassword(password.toCharArray(), correctHash);
     }
 
     public static boolean verifyPassword(char[] password, String correctHash)
         throws CannotPerformOperationException, InvalidHashException
     {
+        System.out.println("passwordchar " + password);
         // Decode the hash into its parameters
         String[] params = correctHash.split(":");
         if (params.length != HASH_SECTIONS) {

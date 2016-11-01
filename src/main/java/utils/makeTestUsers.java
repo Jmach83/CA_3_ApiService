@@ -6,6 +6,7 @@ import facades.UserFacade;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class makeTestUsers {
@@ -14,10 +15,14 @@ public class makeTestUsers {
   //Run this file to setup the users required to use the initial version of the seed
   public static void main(String[] args) {
     EntityManager em = Persistence.createEntityManagerFactory("pu_development").createEntityManager();
+
+    UserFacade uf = new UserFacade();
     try {
       System.out.println("Creating TEST Users");
+    
       if (em.find(User.class, "user") == null) {
         em.getTransaction().begin();
+        
         Role userRole = new Role("User");
         Role adminRole = new Role("Admin");
         User user = new User("user", "test");
@@ -27,12 +32,14 @@ public class makeTestUsers {
         User both = new User("user_admin", "test");
         both.addRole(userRole);
         both.addRole(adminRole);
+        
         em.persist(userRole);
         em.persist(adminRole);
         em.persist(user);
         em.persist(admin);
         em.persist(both);
         em.getTransaction().commit();
+        
         System.out.println("Created TEST Users");
       }
     } catch (Exception ex) {

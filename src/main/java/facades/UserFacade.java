@@ -1,5 +1,6 @@
 package facades;
 
+import entity.Role;
 import security.IUserFacade;
 import entity.User;
 import java.util.List;
@@ -7,18 +8,24 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import security.IUser;
 import security.PasswordStorage;
 
 public class UserFacade implements IUserFacade {
+   
+   public UserFacade() {
+       emf = Persistence.createEntityManagerFactory("pu_development"); 
+
+   }
 
   EntityManagerFactory emf;
 
   public UserFacade(EntityManagerFactory emf) {
     this.emf = emf;   
   }
-
-  private EntityManager getEntityManager() {
+ 
+ private EntityManager getEntityManager() {
     return emf.createEntityManager();
   }
 
@@ -31,14 +38,37 @@ public class UserFacade implements IUserFacade {
       em.close();
     }
   }
-
+  
+  public void addUser(String username, String password, Role role) {
+      System.out.println("adduser");
+     EntityManager em = getEntityManager();
+      try {
+          
+          em.getTransaction().begin();
+          User u = new User(username, password);
+          //Role userRole = new Role("User");
+          u.addRole(role);
+          //em.persist(userRole);
+          em.persist(u);
+          em.getTransaction().commit();
+      } catch (PasswordStorage.CannotPerformOperationException ex) {
+          Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
+      }
+      finally {
+          em.close();
+      }
+      
+  }
   /*
   Return the Roles if users could be authenticated, otherwise null
    */
   @Override
   public List<String> authenticateUser(String userName, String password) {
+      
     IUser user = getUserByUserId(userName);
+      System.out.println("user " + user.getUserName() + user.getRolesAsStrings() + user.getPassword());
     try {
+        System.out.println("verify " + PasswordStorage.verifyPassword(password, user.getPassword()) );
       return user != null && PasswordStorage.verifyPassword(password, user.getPassword()) ? user.getRolesAsStrings() : null;
     } catch (PasswordStorage.CannotPerformOperationException | PasswordStorage.InvalidHashException ex) {
       Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
