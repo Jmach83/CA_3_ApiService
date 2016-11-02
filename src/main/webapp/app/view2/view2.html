@@ -1,4 +1,32 @@
 <p>This is the partial for view 2.</p>
 <div>
-  <p>Data from server (Users ONLY) <b style="color: darkblue">{{data}}</b></p>
+    <p>Data from server (Users ONLY) <b style="color: darkblue">{{data}}</b></p>
+</div>
+
+<div ng-controller="cvrController">
+
+    <form ng-submit="getCVR();">
+        <input type="text" placeholder="Search text" ng-model="searchtext"/>
+
+        <select name="" ng-model="country">
+            <option>dk</option>
+            <option>no</option>
+        </select>
+
+        <input type="submit" value="search"/>
+    </form>
+
+
+    <p>{{cvrInfoList.name}}</p>
+
+    <uib-accordion close-others="oneAtATime">
+        <div uib-accordion-group class="panel-default" heading="{{i.name}}" ng-repeat="i in cvrInfoList.productionunits">
+            Address: {{i.address}}<br>
+            Zipcode: {{i.zipcode}}<br>
+            city: {{i.city}}<br>
+            phone: {{i.phone}}<br>
+            Email: {{i.email}}<br>
+        </div>
+    </uib-accordion>
+
 </div>
