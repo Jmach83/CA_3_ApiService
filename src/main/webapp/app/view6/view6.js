@@ -11,12 +11,17 @@ angular.module('myApp.view6', ['ngRoute'])
             }])
 
         .controller('View6Ctrl', ['$scope', function ($scope) {
-                $scope.myname = 'mia';
-
+                $scope.groupMembers = [
+                    {firstname: 'Lasse', lastname: 'Wenger'},
+                    {firstname: 'Hamza', lastname: 'Laroussi'},
+                    {firstname: 'Jonas', lastname: 'Machon'},
+                    {firstname: 'Emma', lastname: 'Blomsterberg'},
+                    {firstname: 'Mia', lastname: 'Ryvard'},
+                ];
+                console.log($scope.groupMembers[1].firstname);
 
 
 
             }]);
-
 
 
