@@ -1,6 +1,10 @@
 <h1>Create acount</h1>
 <div>
-<input type="text" placeholder="User name" name="username" value="" />
-<input type="password" placeholder="Password" name="password" value="" />
-<p>{{myname}}</p>
+<input type="text" placeholder="User name" ng-model="user.username" name="username"  />
+<input type="password" placeholder="Password" ng-model="user.password" name="password" />
+<input type="submit" value="Create User" ng-click="createUser()">
+
+<div ng-show="isCreated">
+Your user is now created!   
+</div>    
 </div>
