@@ -7,10 +7,13 @@ import com.google.gson.JsonSyntaxException;
 import com.nimbusds.jose.*;
 import com.nimbusds.jose.crypto.MACSigner;
 import com.nimbusds.jwt.*;
+import entity.User;
 import facades.UserFacade;
 import java.security.SecureRandom;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.NotAuthorizedException;
@@ -53,6 +56,23 @@ public class Login {
       }
     }
     throw new NotAuthorizedException("Invalid username or password. Please try again", Response.Status.UNAUTHORIZED);
+  }
+  
+  @POST
+  @Consumes(MediaType.APPLICATION_JSON)
+  @Produces(MediaType.APPLICATION_JSON)
+  @Path("createuser")
+  public void createUser(String jsonString) {
+      JsonObject json = new JsonParser().parse(jsonString).getAsJsonObject();
+      String username = json.get("username").getAsString();
+      String password = json.get("password").getAsString();
+      try {
+          User u = new User(username, password);
+          UserFacade uf = new UserFacade();
+          uf.addUser(u);
+      } catch (PasswordStorage.CannotPerformOperationException ex) {
+          Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+      }
   }
 
   
