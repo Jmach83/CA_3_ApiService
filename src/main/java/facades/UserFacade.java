@@ -13,67 +13,79 @@ import security.IUser;
 import security.PasswordStorage;
 
 public class UserFacade implements IUserFacade {
-   
-   public UserFacade() {
-       emf = Persistence.createEntityManagerFactory("pu_development"); 
 
-   }
+    public UserFacade() {
+        emf = Persistence.createEntityManagerFactory("pu_development");
 
-  EntityManagerFactory emf;
-
-  public UserFacade(EntityManagerFactory emf) {
-    this.emf = emf;   
-  }
- 
- private EntityManager getEntityManager() {
-    return emf.createEntityManager();
-  }
-
-  @Override
-  public IUser getUserByUserId(String id) {
-    EntityManager em = getEntityManager();
-    try {
-      return em.find(User.class, id);
-    } finally {
-      em.close();
     }
-  }
-  
-  public void addUser(String username, String password, Role role) {
-      System.out.println("adduser");
-     EntityManager em = getEntityManager();
-      try {
-          
-          em.getTransaction().begin();
-          User u = new User(username, password);
-          //Role userRole = new Role("User");
-          u.addRole(role);
-          //em.persist(userRole);
-          em.persist(u);
-          em.getTransaction().commit();
-      } catch (PasswordStorage.CannotPerformOperationException ex) {
-          Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
-      }
-      finally {
-          em.close();
-      }
+
+    EntityManagerFactory emf;
+
+    public UserFacade(EntityManagerFactory emf) {
+        this.emf = emf;
+    }
+
+    private EntityManager getEntityManager() {
+        return emf.createEntityManager();
+    }
+
+    @Override
+    public IUser getUserByUserId(String id) {
+        EntityManager em = getEntityManager();
+        try {
+            return em.find(User.class, id);
+        } finally {
+            em.close();
+        }
+    }
+
+//    public void addUser(String username, String password, Role role) {
+//        System.out.println("adduser");
+//        EntityManager em = getEntityManager();
+//        try {
+//
+//            em.getTransaction().begin();
+//            User u = new User(username, password);
+//            //Role userRole = new Role("User");
+//            u.addRole(role);
+//            //em.persist(userRole);
+//            em.persist(u);
+//            em.getTransaction().commit();
+//
+//        } finally {
+//            em.close();
+//        }
+//
+//    }
+
+    public void addUser(User u) {
       
-  }
-  /*
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            u.addRole(new Role("User"));
+            em.persist(u);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+    }
+
+    /*
   Return the Roles if users could be authenticated, otherwise null
-   */
-  @Override
-  public List<String> authenticateUser(String userName, String password) {
-      
-    IUser user = getUserByUserId(userName);
-      System.out.println("user " + user.getUserName() + user.getRolesAsStrings() + user.getPassword());
-    try {
-        System.out.println("verify " + PasswordStorage.verifyPassword(password, user.getPassword()) );
-      return user != null && PasswordStorage.verifyPassword(password, user.getPassword()) ? user.getRolesAsStrings() : null;
-    } catch (PasswordStorage.CannotPerformOperationException | PasswordStorage.InvalidHashException ex) {
-      Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
-      return null;
+     */
+    @Override
+    public List<String> authenticateUser(String userName, String password) {
+
+        IUser user = getUserByUserId(userName);
+       
+        try {
+           
+            return user != null && PasswordStorage.verifyPassword(password, user.getPassword()) ? user.getRolesAsStrings() : null;
+        } catch (PasswordStorage.CannotPerformOperationException | PasswordStorage.InvalidHashException ex) {
+            Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
     }
-  }
 
 }
