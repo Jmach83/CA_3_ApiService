@@ -47,6 +47,7 @@ public class Login {
         String token = createToken(username, roles);
         responseJson.addProperty("username", username);
         responseJson.addProperty("token", token);
+       
         return Response.ok(new Gson().toJson(responseJson)).build();
       }
     }
