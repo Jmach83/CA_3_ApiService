@@ -11,6 +11,7 @@ angular.module('myApp.view6', ['ngRoute'])
             }])
 
         .controller('View6Ctrl', ['$scope', function ($scope) {
+                $scope.oneAtATime = true;
                 $scope.groupMembers = [
                     {firstname: 'Lasse', lastname: 'Wenger'},
                     {firstname: 'Hamza', lastname: 'Laroussi'},
@@ -18,7 +19,7 @@ angular.module('myApp.view6', ['ngRoute'])
                     {firstname: 'Emma', lastname: 'Blomsterberg'},
                     {firstname: 'Mia', lastname: 'Ryvard'},
                 ];
-                
+
             }]);
 
 

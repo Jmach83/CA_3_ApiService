@@ -1,5 +1,19 @@
 <h1>Documentation</h1>
-<h5>Gruppe medlemmer</h5>
-<ul>
-    <li ng-repeat="member in groupMembers">{{member.firstname}} {{member.lastname}}</li>
-</ul>
+
+<uib-accordion close-others="oneAtATime">
+    <div uib-accordion-group class="panel-default" heading="Gruppe info">
+        <p>Datamatiker A</p>
+        <ul>
+            <li ng-repeat="member in groupMembers">{{member.firstname}} {{member.lastname}}</li>
+        </ul>
+    </div>
+    <div uib-accordion-group class="panel-default" heading="Test strategi">
+        <p>tekst her</p>
+    </div>
+    <div uib-accordion-group class="panel-default" heading="Hvem har lavet hvad">
+        <p>tekst her</p>
+    </div>
+    <div uib-accordion-group class="panel-default" heading="How to test">
+        <p>tekst her</p>
+    </div>
+</uib-accordion>

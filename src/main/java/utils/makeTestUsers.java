@@ -16,12 +16,19 @@ public class makeTestUsers {
   public static void main(String[] args) {
     EntityManager em = Persistence.createEntityManagerFactory("pu_development").createEntityManager();
 
+//    UserFacade uf = new UserFacade();
+
     UserFacade uf = new UserFacade();
      
     try {
       System.out.println("Creating TEST Users");
+<<<<<<< HEAD
       //User user2 = new User("nytestuser", "test");
       //uf.addUser(user2);
+=======
+//      User user2 = new User("nytestuser", "test");
+//      uf.addUser(user2);
+>>>>>>> d1f575ab12601d098900986b41447ce153c12472
       if (em.find(User.class, "user") == null) {
         em.getTransaction().begin();
         
