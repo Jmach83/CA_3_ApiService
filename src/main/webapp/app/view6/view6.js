@@ -18,10 +18,7 @@ angular.module('myApp.view6', ['ngRoute'])
                     {firstname: 'Emma', lastname: 'Blomsterberg'},
                     {firstname: 'Mia', lastname: 'Ryvard'},
                 ];
-                console.log($scope.groupMembers[1].firstname);
-
-
-
+                
             }]);
 
 
