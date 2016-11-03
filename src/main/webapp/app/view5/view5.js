@@ -11,17 +11,15 @@ angular.module('myApp.view5', ['ngRoute'])
             }])
 
         .controller('View5Ctrl', ['$scope', '$http', function ($scope, $http) {
-           
-                var user = {
-                    username: '',
-                    password: ''
-                };
-                $scope.user;
+          
+                
+                $scope.user = {};
+                
                 $scope.isCreated = false;
                 $scope.createUser = function () {
                     $http.post('api/login/createuser'
                 , $scope.user);
-                $scope.isCreated = true;
+                $scope.isCreated = true;                                                                                                                                                                                                                                                                                                                                                               ;
             };
                 
 

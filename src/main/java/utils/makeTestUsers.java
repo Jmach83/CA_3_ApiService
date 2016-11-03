@@ -17,6 +17,7 @@ public class makeTestUsers {
     EntityManager em = Persistence.createEntityManagerFactory("pu_development").createEntityManager();
 
     UserFacade uf = new UserFacade();
+     
     try {
       System.out.println("Creating TEST Users");
       User user2 = new User("nytestuser", "test");

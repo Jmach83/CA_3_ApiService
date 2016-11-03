@@ -10,12 +10,29 @@ angular.module('myApp.view3', ['ngRoute'])
 }])
 
 .controller('View3Ctrl', function($http,$scope) {
-  $http.get('api/demoadmin')
+    
+  $http.get('api/admin/users')
             .success(function (data, status, headers, config) {
               $scope.data = data;
+              console.log($scope.data);
             })
             .error(function (data, status, headers, config) {
-              
+                
+              console.log("status " + status );
+                 $scope.message = status;
+                 console.log($scope.data.message);
              });
- 
+     
+     $scope.deleteUser = function(username) {
+         $http.delete('api/admin/delete/'+username).success(function(){
+             $scope.refresh();
+         });
+         
+     };
+     
+     $scope.refresh = function() {
+         $http.get('api/admin/users').success(function(data) {
+            $scope.data = data; 
+         });
+     };
 });

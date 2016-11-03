@@ -70,6 +70,33 @@ public class UserFacade implements IUserFacade {
             em.close();
         }
     }
+    
+    public List<User> getUsers() {
+        EntityManager em = getEntityManager();
+        List<User> users;
+        try {
+            em.getTransaction().begin();
+            //users = em.createQuery("Select u from User u").getResultList();
+            users = em.createQuery("Select u from SEED_USER u").getResultList();;
+            em.getTransaction().commit();
+            return users;
+        } finally {
+            em.close();
+        }
+    }
+    
+    public User deleteUser(String username) {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            User u = em.find(User.class, username);
+            em.remove(u);
+            em.getTransaction().commit();
+            return u;
+        } finally {
+            em.close();
+        }
+    }
 
     /*
   Return the Roles if users could be authenticated, otherwise null
