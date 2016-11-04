@@ -21,10 +21,15 @@ public class makeTestUsers {
      
     try {
       System.out.println("Creating TEST Users");
+<<<<<<< HEAD
 
       //User user2 = new User("nytestuser", "test");
       //uf.addUser(user2);
 
+=======
+      //User user2 = new User("nytestuser", "test");
+      //uf.addUser(user2);
+>>>>>>> e08a5f1f6111da6d1eda3eb14e78c0a8722c2302
       if (em.find(User.class, "user") == null) {
         em.getTransaction().begin();
         
