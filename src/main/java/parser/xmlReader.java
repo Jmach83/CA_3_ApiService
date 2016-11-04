@@ -1,4 +1,4 @@
-package xmlReader;
+package parser;
 
 
 import entity.Currency;
