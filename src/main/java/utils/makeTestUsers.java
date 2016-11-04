@@ -2,6 +2,7 @@ package utils;
 
 import entity.Role;
 import entity.User;
+import facades.CurrencyFacade;
 import facades.UserFacade;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,19 +18,16 @@ public class makeTestUsers {
     EntityManager em = Persistence.createEntityManagerFactory("pu_development").createEntityManager();
 
 //    UserFacade uf = new UserFacade();
-
+        CurrencyFacade cf = new CurrencyFacade();
      
     try {
       System.out.println("Creating TEST Users");
-<<<<<<< HEAD
+
 
       //User user2 = new User("nytestuser", "test");
       //uf.addUser(user2);
 
-=======
-      //User user2 = new User("nytestuser", "test");
-      //uf.addUser(user2);
->>>>>>> e08a5f1f6111da6d1eda3eb14e78c0a8722c2302
+
       if (em.find(User.class, "user") == null) {
         em.getTransaction().begin();
         
@@ -42,6 +40,8 @@ public class makeTestUsers {
         User both = new User("user_admin", "test");
         both.addRole(userRole);
         both.addRole(adminRole);
+        
+        cf.populateCurrencyDB();
         
         em.persist(userRole);
         em.persist(adminRole);
