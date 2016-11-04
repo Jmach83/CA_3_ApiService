@@ -6,7 +6,9 @@
 package rest;
 
 import com.google.gson.Gson;
+import entity.Currency;
 import facades.CurrencyFacade;
+import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.ws.rs.Consumes;
@@ -40,12 +42,32 @@ public class CurrencyRest
   
   @GET
   @Produces(MediaType.APPLICATION_JSON)
-  @Path("hello")
-  public String bob()
+  @Path("dailyrates")
+  public String getRates()
   {
-
-        
-
-    return "helloworld";
+      
+      List<Currency> currencies = cf.getCurrency();
+      return new Gson().toJson(currencies); 
+    
   }
+  
+  @GET 
+  @Produces(MediaType.APPLICATION_JSON)
+  @Consumes(MediaType.APPLICATION_JSON)
+  @Path("calculator/{amount}/{fromcurrency}/{tocurrency}")
+  public String exchangeRateCal(@PathParam("amount") double amount, @PathParam("fromcurrency") 
+                                String fcurrency, @PathParam("tocurrency") String tcurrency) {
+      
+      double fcur = cf.getCurrencyBySymbol(fcurrency).getRate();
+      double tcur = cf.getCurrencyBySymbol(tcurrency).getRate();
+      
+      double cur = fcur/tcur;
+      
+      String formel = String.format("%.2f", amount * cur);
+      
+      
+      // double res = fcur * tcur;
+      
+      return new Gson().toJson(formel);
+}
 }

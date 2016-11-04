@@ -1,5 +1,34 @@
 <h1>view7 exchange rate</h1>
 <p>This is the partial for view 7.</p>
 <div>
-  <p>Data from server (Users ONLY) <b style="color: darkblue">{{data}}</b></p>
+  <p>Data from server (Users ONLY) <b style="color: darkblue"></b></p>
+  
+  <form ng-submit="cal();" class="form">
+      <input type="number" name="amount" ng-model="amount">
+      <div> From: 
+      <select ng-model="fromVal">
+          <option ng-repeat="val in data"  value="{{val.symbol}}">{{val.symbol}}</option>
+      </select>
+       To:
+      <select ng-model="toVal">
+          <option ng-repeat="val in data"  value="{{val.symbol}}">{{val.symbol}}</option>
+      </select>
+      </div>
+      <div>
+          <input type="text" value="{{result}}" readonly>
+      </div>
+      <input type="submit" value="submit">
+  </form>
+  <table class="table">
+      <tr>
+      <th>Symbol</th>
+      <th>Description</th>
+      <th>Rate </th>
+      </tr>
+      <tr ng-repeat="val in data">
+          <td>{{val.symbol}}</td>
+          <td>{{val.description}}</td>
+          <td>{{val.rate}}</td>
+      </tr>
+  </table>
 </div>

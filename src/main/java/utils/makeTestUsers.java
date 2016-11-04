@@ -19,7 +19,8 @@ public class makeTestUsers {
 
 //    UserFacade uf = new UserFacade();
         CurrencyFacade cf = new CurrencyFacade();
-     
+         cf.populateCurrencyDB();
+        cf.getCurrency();
     try {
       System.out.println("Creating TEST Users");
 
@@ -41,7 +42,7 @@ public class makeTestUsers {
         both.addRole(userRole);
         both.addRole(adminRole);
         
-        cf.populateCurrencyDB();
+       
         
         em.persist(userRole);
         em.persist(adminRole);

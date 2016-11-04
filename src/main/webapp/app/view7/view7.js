@@ -12,11 +12,25 @@ angular.module('myApp.view7', ['ngRoute'])
         .controller('View7Ctrl', function ($http, $scope) {
           $http({
             method: 'GET',
-            url: 'api/demouser'
+            url: 'api/currency/dailyrates'
           }).then(function successCallback(res) {
-            $scope.data = res.data.message;
+            $scope.data = res.data;
           }, function errorCallback(res) {
             $scope.error = res.status + ": "+ res.data.statusText;
           });
-
+         
+         $scope.amount;
+        // $scope.fromVal = " ";
+       //  $scope.toVal = " ";
+         $scope.cal = function () {
+          console.log($scope.fromVal);
+          console.log($scope.toVal);
+             $http({
+             method: 'GET',
+             url: 'api/currency/calculator/'+$scope.amount+'/'+$scope.fromVal+'/'+$scope.toVal 
+         }).then(function successCalback(res) {
+             $scope.result = res.data;
+         });
+         };
+         
         });

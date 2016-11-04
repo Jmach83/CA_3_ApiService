@@ -9,6 +9,7 @@ import entity.Currency;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -62,7 +63,24 @@ public class CurrencyFacade
     public Currency getCurrencyBySymbol(String symbol) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(Currency.class, symbol);
+            em.getTransaction().begin();
+            Currency c = em.find(Currency.class, symbol);
+            em.getTransaction().commit();
+            return c;
+        } finally {
+            em.close();
+        }
+    }
+    
+    public List<Currency> getCurrency() {
+        EntityManager em = getEntityManager();
+        List<Currency> currencies;
+        try {
+            em.getTransaction().begin();
+            currencies = em.createQuery("Select c from Currency c").getResultList();
+            em.getTransaction().commit();
+            System.out.println("size currencies " + currencies.size());
+            return currencies;
         } finally {
             em.close();
         }
