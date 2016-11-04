@@ -17,17 +17,20 @@ public class Currency
     private String symbol;
     private String description;
     private Double rate; 
+    private String currencyDate;
     
     
     public Currency()
     {
         
     }
-    public Currency( String symbol, String description , Double rate)
+    
+    public Currency( String symbol, String description , Double rate, String currencyDate)
             {
                 this.symbol = symbol;
                 this.description = description;
                 this.rate = rate;
+                this.currencyDate = currencyDate;
             }
 
     public String getSymbol()

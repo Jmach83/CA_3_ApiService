@@ -86,6 +86,20 @@ public class CurrencyFacade
         }
     }
     
+    public void dropCurrencyTable(){
+        EntityManager em = getEntityManager();
+        try
+        {
+            em.getTransaction().begin();
+            em.createQuery("Delete from Currency c").executeUpdate();
+            em.getTransaction().commit();
+            
+        } finally
+        {
+            em.close();
+        }
+    }
+    
     public void populateCurrencyDB()
     {
         try
@@ -108,6 +122,7 @@ public class CurrencyFacade
             addCurrency(cu);
         }
     }
+    
     
     
     
