@@ -156,7 +156,7 @@ public class UserTest
                 .header("Authorization", "Bearer" + securityToken)
                 .when().get("/api/currency/calculator/"+amount+"/"+fromcurrency+"/"+tocurrency)
                 .then().statusCode(200)
-                .body("message",equalTo(8.00));
+                .body("message", equalTo(""));
         
     }
     
