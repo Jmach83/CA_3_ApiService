@@ -115,4 +115,8 @@ public class UserFacade implements IUserFacade {
         }
     }
 
+    void setEmf(EntityManagerFactory emf) {
+        this.emf = emf;
+    }
+
 }
