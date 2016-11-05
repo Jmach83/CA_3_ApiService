@@ -6,6 +6,7 @@
 package rest;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import entity.Currency;
 import facades.CurrencyFacade;
 import java.util.List;
@@ -36,8 +37,8 @@ public class CurrencyRest
 
         entity.Currency c = cf.getCurrencyBySymbol(symbol);
 
-    //return new Gson().toJson(c);
-    return "swag";
+        return new Gson().toJson(c);
+    //return "swag";
   }
   
   @GET
@@ -65,9 +66,10 @@ public class CurrencyRest
       
       String formel = String.format("%.2f", amount * cur);
       
-      
+      JsonObject jsonObj = new JsonObject();
+      jsonObj.addProperty("result", formel);
       // double res = fcur * tcur;
       
-      return new Gson().toJson(formel);
+      return new Gson().toJson(jsonObj);
 }
 }

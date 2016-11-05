@@ -29,7 +29,9 @@ angular.module('myApp.view7', ['ngRoute'])
              method: 'GET',
              url: 'api/currency/calculator/'+$scope.amount+'/'+$scope.fromVal+'/'+$scope.toVal 
          }).then(function successCalback(res) {
-             $scope.result = res.data;
+             
+             $scope.calResult = res.data;
+            
          });
          };
          
