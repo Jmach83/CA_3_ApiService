@@ -59,10 +59,9 @@ public class CurrencyFacadeTest {
     /**
      * Test of getCuList method, of class CurrencyFacade.
      */
-    @Test
+    //@Test
     public void testGetCuList() {
         System.out.println("getCuList");
-        CurrencyFacade instance = new CurrencyFacade();
         ArrayList<Currency> expResult = null;
         ArrayList<Currency> result = instance.getCuList();
         assertEquals(expResult, result);
@@ -73,11 +72,10 @@ public class CurrencyFacadeTest {
     /**
      * Test of addCurrency method, of class CurrencyFacade.
      */
-    @Test
+    //@Test
     public void testAddCurrency() {
         System.out.println("addCurrency");
         Currency c = null;
-        CurrencyFacade instance = new CurrencyFacade();
         instance.addCurrency(c);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -89,13 +87,9 @@ public class CurrencyFacadeTest {
     @Test
     public void testGetCurrencyBySymbol() {
         System.out.println("getCurrencyBySymbol");
-        String symbol = "";
-        CurrencyFacade instance = new CurrencyFacade();
-        Currency expResult = null;
-        Currency result = instance.getCurrencyBySymbol(symbol);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String expResult = "USD";
+        Currency result = instance.getCurrencyBySymbol(expResult);
+        assertEquals(expResult, result.getSymbol());
     }
 
     /**
@@ -104,21 +98,19 @@ public class CurrencyFacadeTest {
     @Test
     public void testGetCurrency() {
         System.out.println("getCurrency");
-        CurrencyFacade instance = new CurrencyFacade();
-        List<Currency> expResult = null;
-        List<Currency> result = instance.getCurrency();
+        String expResult = "AUD";
+        List<Currency> currencyList = instance.getCurrency();
+        Currency currency = currencyList.get(0);
+        String result = currency.getSymbol();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of dropCurrencyTable method, of class CurrencyFacade.
      */
-    @Test
+    //@Test
     public void testDropCurrencyTable() {
         System.out.println("dropCurrencyTable");
-        CurrencyFacade instance = new CurrencyFacade();
         instance.dropCurrencyTable();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -127,13 +119,10 @@ public class CurrencyFacadeTest {
     /**
      * Test of populateCurrencyDB method, of class CurrencyFacade.
      */
-    @Test
+    //@Test
     public void testPopulateCurrencyDB() {
         System.out.println("populateCurrencyDB");
-        CurrencyFacade instance = new CurrencyFacade();
         instance.populateCurrencyDB();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
 }
