@@ -143,20 +143,20 @@ public class UserTest
                 .header("Authorization", "Bearer" + securityToken)
                 .when().get("/api/admin/users")
                 .then().statusCode(200);
-
     }
     
     @Test
     public void testCurrencyRates()
     {
         login("user","test");
-        double amount = 0, fromcurrency = 0, tocurrency = 0;
+        double amount = 12;
+        String fromcurrency = "AUD", tocurrency = "EUR";
         given()
                 .contentType("application/json")
                 .header("Authorization", "Bearer" + securityToken)
                 .when().get("/api/currency/calculator/"+amount+"/"+fromcurrency+"/"+tocurrency)
                 .then().statusCode(200)
-                .body("message",equalTo(""));
+                .body("message",equalTo(8.00));
         
     }
     
