@@ -149,13 +149,17 @@ public class UserTest
     public void testCurrencyRates()
     {
         login("user","test");
-        double amount = 12;
-        String fromcurrency = "AUD", tocurrency = "EUR";
+        double amount = 100;
+        String fromcurrency = "GBP", tocurrency = "EUR";
         given()
                 .contentType("application/json")
                 .header("Authorization", "Bearer" + securityToken)
                 .when().get("/api/currency/calculator/"+amount+"/"+fromcurrency+"/"+tocurrency)
                 .then().statusCode(200);
+<<<<<<< HEAD
+=======
+                //.body("message", equalTo(""));
+>>>>>>> d06a97dc7ac1b95b57a0b0c2b059ee4cccbe5396
         
     }
     
