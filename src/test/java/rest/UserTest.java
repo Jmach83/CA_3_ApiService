@@ -155,8 +155,7 @@ public class UserTest
                 .contentType("application/json")
                 .header("Authorization", "Bearer" + securityToken)
                 .when().get("/api/currency/calculator/"+amount+"/"+fromcurrency+"/"+tocurrency)
-                .then().statusCode(200)
-                .body("message", equalTo(""));
+                .then().statusCode(200);
         
     }
     
