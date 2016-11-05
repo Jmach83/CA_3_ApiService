@@ -146,16 +146,16 @@ public class UserFacadeTest {
     /**
      * Test of authenticateUser method, of class UserFacade.
      */
-    //@Test
+    @Test
     public void testAuthenticateUser() {
         System.out.println("authenticateUser");
-        String userName = "";
-        String password = "";
-        List<String> expResult = null;
-        List<String> result = instance.authenticateUser(userName, password);
+        String userName = "admin";
+        String password = "test";
+        String expResult = "Admin";
+        List<String> roleList = instance.authenticateUser(userName, password);
+        String result = roleList.get(0);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
     
 }
