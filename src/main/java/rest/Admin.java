@@ -20,7 +20,7 @@ import javax.ws.rs.core.MediaType;
 import jsonmappers.UserMapper;
 
 @Path("admin")
-//@RolesAllowed("Admin")
+@RolesAllowed("Admin")
 public class Admin {
   
   @GET
