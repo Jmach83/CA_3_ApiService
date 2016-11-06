@@ -9,10 +9,16 @@
     </div>
     <div uib-accordion-group class="panel-default" heading="Test strategi">
         <h4>JUnit Test</h4>
-        <p>Vi har testet vorest UserFacade og CurrencyFacade med JUnitog alle test virker.<br>
-        Det var det ikke muligt for os at teste op imod en (Derby)"in memory Database",
-        da vi havde store problemer med at få den til at fungere. Derfor tester vi op imod en database vi har lagt op på Digital Ocean.<br>
-        I currencyFacade var det ikke muligt at teste alle metoderne da de fleste metoder skete i klassen selv.</p>
+        <p>Vi har testet vorest UserFacade og CurrencyFacade ved brug af JUnit. De udførte tests virker alle.<br>
+        Det var dog ikke muligt for os at teste op imod en (Derby)"in memory Database",
+        da vi havde store problemer med at få den til at fungere. Derfor valgte vi og teste op imod en database vi har lagt op på en Digital Ocean.<br>
+        I currencyFacade var det ikke muligt at teste alle metoderne da de fleste metoder skete i klassen selv. Der er også nogle af metoderne der bliver testet i en test
+        eksempelvis bruger vi AddCurrency() metoden når vi kalder populateCurrencyDB() da en liste bliver loopet igennem hvor der bruges AddCurrency() for hver objekt i listen. </p>
+        
+        
+        Forneden ses et link hvori 2 screenshot der viser vores test resultater. 
+        <br>
+        <a href="https://drive.google.com/drive/folders/0BwCQZYBtnpimclVIcGlKa2R1ajA">Klik her for at se test resultater</a>
     </div>
     <div uib-accordion-group class="panel-default" heading="Hvem har lavet hvad">
         <p>Alle gruppemedlemmer har været ind over hver opgave på en eller anden måde. Der har været
