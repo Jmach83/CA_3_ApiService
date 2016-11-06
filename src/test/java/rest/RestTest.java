@@ -120,7 +120,6 @@ public class RestTest
                 post("/api/login/createuser").
                 as(User.class);
 
-        //Skal indeholde noget med authorization
         given().
                 contentType("application/json").
                 when().

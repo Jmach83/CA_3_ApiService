@@ -19,8 +19,23 @@
         Forneden ses 2 screenshot der viser vores test resultater. 
 
         <img src="../pictures/CurrencyTEST.png" alt=""/>
-        
+
         <img src="../pictures/UserFacadeTest.png" alt=""/>
+        
+        <h4>Rest Assured</h4>
+        <p>Vi har testet rest metoder for vores createUser Deleteuser GetUsers og CurrencyRates. 
+        De udførte tests varierer i deres resultater og det har derfor været svært at bruge. 
+        Alle tests har virket med undtagelse af serverIsRunningPort9999() som giver en status 404.
+        
+        serverIsRunningPort8080() fejler hvis ikke projectet køres på port 8080 ;)
+        Der har været nogle problemer med de tests som kræver admin Authorization. 
+        Nogle gange virker de og andre gange giver de status 404 eller 403, 
+        vi har ikke kunne regne ud hvad det skyldes. 
+        <br>Vores deleteuser test har virket men nu sletter den ikke længere i databasen og derfor virker testen ikke, det virker dog stadig i programmet</p>
+        
+        <img src="Skærmbillede 2016-11-05 kl. 10.58.53.png" alt=""/>
+        
+        
     </div>
     <div uib-accordion-group class="panel-default" heading="Hvem har lavet hvad">
         <p>Alle gruppemedlemmer har været ind over hver opgave på en eller anden måde. Der har været
@@ -32,7 +47,7 @@
     </div>
     <div uib-accordion-group class="panel-default" heading="How to test">
         <p> 
-        <b>ADMIN API</b>
+            <b>ADMIN API</b>
         </p>  
         <p> 
             Get all users
@@ -73,6 +88,17 @@
         </p>
         <p>/api/currency/calculator/{amount}/{fromcurrency}/{tocurrenc
         </p>
+
+
+         <br>How to test webpages:
+         <br>• Login (admin)
+        <br>○ Test af admin login med bruger: admin pass: test
+        <br> ○ Har adgang til allUsers der viser de bruger der eksistere med username og role, det er muligt at delete user.
+         <br>• Login(user)
+           <br>  ○ Test af user login med bruger: user pass: test eller create new account og login med denne.
+          <br>   ○ Har adgang til company info og exchange rate info.
+           <br>  ○ Company info giver adgang til at søge på firma cvr i data.virk.dk api. Vælg land (dk, no) og søg på et firma navn.
+         <br>Exchange rate info, henter kurser fra national banken 1 gang i døgnet, der er også en valuta beregner hvor man vælger hvilken møntfod man vil beregne fra og til udfra det indtastet beløb.
     </div>
 
     <div uib-accordion-group class="panel-default" heading="Github">
