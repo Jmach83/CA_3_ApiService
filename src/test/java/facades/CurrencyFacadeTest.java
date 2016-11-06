@@ -59,26 +59,28 @@ public class CurrencyFacadeTest {
     /**
      * Test of getCuList method, of class CurrencyFacade.
      */
-    //@Test
+    @Test
     public void testGetCuList() {
         System.out.println("getCuList");
-        ArrayList<Currency> expResult = null;
-        ArrayList<Currency> result = instance.getCuList();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //String expResult = "AUD";
+        ArrayList<Currency> cuList = instance.getCuList();
+        boolean result = instance.getCuList().isEmpty();
+        System.out.println("cuList is empty: " + cuList.isEmpty());
+        //String result = cuList.get(0).getSymbol();
+        //assertEquals(expResult, result);
+        assertTrue(result);
     }
 
     /**
      * Test of addCurrency method, of class CurrencyFacade.
      */
-    //@Test
+    @Test
     public void testAddCurrency() {
         System.out.println("addCurrency");
-        Currency c = null;
-        instance.addCurrency(c);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        Currency c = null;
+//        instance.addCurrency(c);
+        boolean result = instance.getCurrency().isEmpty();
+        assertFalse(result);
     }
 
     /**
