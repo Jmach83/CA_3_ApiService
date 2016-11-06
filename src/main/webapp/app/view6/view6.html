@@ -10,13 +10,13 @@
     <div uib-accordion-group class="panel-default" heading="Test strategi">
         <h4>JUnit Test</h4>
         <p>Vi har testet vorest UserFacade og CurrencyFacade ved brug af JUnit. De udførte tests virker alle.<br>
-        Det var dog ikke muligt for os at teste op imod en (Derby)"in memory Database",
-        da vi havde store problemer med at få den til at fungere. Derfor valgte vi og teste op imod en database vi har lagt op på en Digital Ocean.<br>
-        I currencyFacade var det ikke muligt at teste alle metoderne da de fleste metoder skete i klassen selv. Der er også nogle af metoderne der bliver testet i en test
-        eksempelvis bruger vi AddCurrency() metoden når vi kalder populateCurrencyDB() da en liste bliver loopet igennem hvor der bruges AddCurrency() for hver objekt i listen. </p>
-        
-        
-        Forneden ses et link hvori 2 screenshot der viser vores test resultater. 
+            Det var dog ikke muligt for os at teste op imod en (Derby)"in memory Database",
+            da vi havde store problemer med at få den til at fungere. Derfor valgte vi og teste op imod en database vi har lagt op på en Digital Ocean.<br>
+            I currencyFacade var det ikke muligt at teste alle metoderne da de fleste metoder skete i klassen selv. Der er også nogle af metoderne der bliver testet i en test
+            eksempelvis bruger vi AddCurrency() metoden når vi kalder populateCurrencyDB() da en liste bliver loopet igennem hvor der bruges AddCurrency() for hver objekt i listen. </p>
+
+
+        Forneden ses et link hvori der findes 2 screenshot der viser vores test resultater. 
         <br>
         <a href="https://drive.google.com/drive/folders/0BwCQZYBtnpimclVIcGlKa2R1ajA">Klik her for at se test resultater</a>
     </div>
@@ -24,10 +24,54 @@
         <p>Alle gruppemedlemmer har været ind over hver opgave på en eller anden måde. Der har været
             et gruppemedlem som har været ansvarlig for en opgave bliver løst, men har fået hjælp og 
             viden fra øvrige gruppemedlemmer i sådan en grad, at vi ikke kan sige at ét gruppemedlem har lavet
-        en opgave helt selv. Da vi synes at alle i gruppen har været engageret og har haft et højt arbejdsniveau 
-        så mener vi alle skal have fuldt studypoints for deres indsats.</p>
+            en opgave helt selv. Da vi synes at alle i gruppen har været engageret og har haft et højt arbejdsniveau 
+            så mener vi alle skal have fuldt studypoints for deres indsats.</p>
     </div>
     <div uib-accordion-group class="panel-default" heading="How to test">
-        <p>tekst her</p>
+        <p> 
+            ADMIN API
+
+            Get all users
+            @GET
+            /api/admin/users
+
+            Delete user
+            @DELETE
+            /api/admin/user/{id}
+        </p>
+        <br>
+
+        <p>
+            <b>CURRENCY API</b>
+        </p>
+        <p>Get dailyrates </p>
+        <p>@GET</p>
+        <p>
+        /api/currency/dailyrates
+        <br>
+        </p>
+        <p>
+        Get a specific currency by symbol
+        </p>
+        <p>@POST</p>
+        <p>
+        /api/currency/dailyrates/{symbol}
+        <br>
+        </p>
+        <p>
+            Calculate currency
+            </p>
+            <p>
+            @GET
+            </p>
+            <p>/api/currency/calculator/{amount}/{fromcurrency}/{tocurrenc
+        </p>
     </div>
+
+    <div uib-accordion-group class="panel-default" heading="Github">
+        <p>
+            <a href="https://github.com/Jmach83/CA_3_ApiService">Klik her for at github projektet</a>
+        </p>
+    </div>
+
 </uib-accordion>
