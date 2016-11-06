@@ -16,30 +16,37 @@
             eksempelvis bruger vi AddCurrency() metoden når vi kalder populateCurrencyDB() da en liste bliver loopet igennem hvor der bruges AddCurrency() for hver objekt i listen. </p>
 
 
-        Forneden ses et link hvori der findes 2 screenshot der viser vores test resultater. 
-        <br>
-        <a href="https://drive.google.com/drive/folders/0BwCQZYBtnpimclVIcGlKa2R1ajA">Klik her for at se test resultater</a>
+        Forneden ses 2 screenshot der viser vores test resultater. 
+
+        <img src="../pictures/CurrencyTEST.png" alt=""/>
+
+        <img src="../pictures/UserFacadeTest.png" alt=""/>
     </div>
     <div uib-accordion-group class="panel-default" heading="Hvem har lavet hvad">
         <p>Alle gruppemedlemmer har været ind over hver opgave på en eller anden måde. Der har været
             et gruppemedlem som har været ansvarlig for en opgave bliver løst, men har fået hjælp og 
             viden fra øvrige gruppemedlemmer i sådan en grad, at vi ikke kan sige at ét gruppemedlem har lavet
+            <img src="../pictures/CurrencyTEST.png" alt=""/>
             en opgave helt selv. Da vi synes at alle i gruppen har været engageret og har haft et højt arbejdsniveau 
             så mener vi alle skal have fuldt studypoints for deres indsats.</p>
     </div>
     <div uib-accordion-group class="panel-default" heading="How to test">
         <p> 
-            ADMIN API
-
+        <b>ADMIN API</b>
+        </p>  
+        <p> 
             Get all users
+        </p>     
+        <p>
             @GET
-            /api/admin/users
-
-            Delete user
-            @DELETE
-            /api/admin/user/{id}
         </p>
-        <br>
+        <p>/api/admin/users
+        </p>   
+        <p>Delete user</p>   
+        <p>@DELETE</p>   
+        <p>/api/admin/user/{id}</p>   
+        </p>
+        <p></p>
 
         <p>
             <b>CURRENCY API</b>
@@ -47,24 +54,24 @@
         <p>Get dailyrates </p>
         <p>@GET</p>
         <p>
-        /api/currency/dailyrates
-        <br>
+            /api/currency/dailyrates
+            <br>
         </p>
         <p>
-        Get a specific currency by symbol
+            Get a specific currency by symbol
         </p>
         <p>@POST</p>
         <p>
-        /api/currency/dailyrates/{symbol}
-        <br>
+            /api/currency/dailyrates/{symbol}
+            <br>
         </p>
         <p>
             Calculate currency
-            </p>
-            <p>
+        </p>
+        <p>
             @GET
-            </p>
-            <p>/api/currency/calculator/{amount}/{fromcurrency}/{tocurrenc
+        </p>
+        <p>/api/currency/calculator/{amount}/{fromcurrency}/{tocurrenc
         </p>
     </div>
 
