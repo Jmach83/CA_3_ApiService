@@ -20,12 +20,12 @@ import test.utils.EmbeddedTomcat;
  *
  * @author miaryvard
  */
-public class UserTest
+public class RestTest
 {
     private static EmbeddedTomcat tomcat;
     private static String securityToken;
     
-    public UserTest()
+    public RestTest()
     {
     }
     
@@ -149,15 +149,15 @@ public class UserTest
     public void testCurrencyRates()
     {
         login("user","test");
-        double amount = 100;
-        String fromcurrency = "GBP", tocurrency = "EUR";
+        double amount = 5;
+        String fromcurrency = "AUD", tocurrency = "CNY";
         given()
                 .contentType("application/json")
                 .header("Authorization", "Bearer" + securityToken)
                 .when().get("/api/currency/calculator/"+amount+"/"+fromcurrency+"/"+tocurrency)
-                .then().statusCode(200);
-                //.body("message", equalTo(""));
-        
+                .then().statusCode(200)
+                .body("result", equalTo("25,96"));
+
     }
     
 }

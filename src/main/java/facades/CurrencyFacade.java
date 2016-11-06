@@ -23,32 +23,31 @@ import parser.xmlReader;
  *
  * @author hamzalaroussi
  */
-public class CurrencyFacade
-{
+public class CurrencyFacade {
+
     EntityManagerFactory emf;
     private static ArrayList<Currency> cuList = new ArrayList<>();
     Currency cu;
-    
-    public ArrayList<Currency> getCuList()
-    {
+
+    public ArrayList<Currency> getCuList() {
         return cuList;
     }
+
     public CurrencyFacade() {
         emf = Persistence.createEntityManagerFactory("pu_development");
 
     }
-    
-    public CurrencyFacade(EntityManagerFactory emf)
-  {
-    this.emf = emf;
-  }
-    
+
+    public CurrencyFacade(EntityManagerFactory emf) {
+        this.emf = emf;
+    }
+
     private EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
-    
+
     public void addCurrency(Currency c) {
-      
+
         EntityManager em = getEntityManager();
         try {
             em.getTransaction().begin();
@@ -58,8 +57,7 @@ public class CurrencyFacade
             em.close();
         }
     }
-    
-    
+
     public Currency getCurrencyBySymbol(String symbol) {
         EntityManager em = getEntityManager();
         try {
@@ -71,7 +69,7 @@ public class CurrencyFacade
             em.close();
         }
     }
-    
+
     public List<Currency> getCurrency() {
         EntityManager em = getEntityManager();
         List<Currency> currencies;
@@ -85,47 +83,39 @@ public class CurrencyFacade
             em.close();
         }
     }
-    
-    public void dropCurrencyTable(){
+
+    public void dropCurrencyTable() {
         EntityManager em = getEntityManager();
-        try
-        {
+        try {
             em.getTransaction().begin();
             em.createQuery("Delete from Currency c").executeUpdate();
             em.getTransaction().commit();
-            
-        } finally
-        {
+
+        } finally {
             em.close();
         }
     }
-    
-    public void populateCurrencyDB()
-    {
-        try
-        {
+
+    public void populateCurrencyDB() {
+        try {
             XMLReader xr = XMLReaderFactory.createXMLReader();
             xr.setContentHandler(new xmlReader());
             URL url = new URL("http://www.nationalbanken.dk/_vti_bin/DN/DataService.svc/CurrencyRatesXML?lang=en");
             xr.parse(new InputSource(url.openStream()));
-            
-        } catch (SAXException | IOException e)
-        {
+
+        } catch (SAXException | IOException e) {
             e.printStackTrace();
         }
-        
+
         System.out.println(getCuList().size());
-        for (int i = 0; i < getCuList().size(); i++)
-        {
+        for (int i = 0; i < getCuList().size(); i++) {
             Currency cu = getCuList().get(i);
             System.out.println(cu.getSymbol());
             addCurrency(cu);
         }
     }
-    
-    
-    
-    
-    
-    
+
+    void setEmf(EntityManagerFactory emf) {
+        this.emf = emf;
+    }
 }

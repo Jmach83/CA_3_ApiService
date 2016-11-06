@@ -31,6 +31,7 @@ angular.module('myApp.view7', ['ngRoute'])
          }).then(function successCalback(res) {
              
              $scope.calResult = res.data;
+             console.log($scope.calResult);
             
          });
          };
